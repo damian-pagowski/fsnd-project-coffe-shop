@@ -12,3 +12,4 @@ frontend/package-lock.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+frontend/src/environments/environment.ts
