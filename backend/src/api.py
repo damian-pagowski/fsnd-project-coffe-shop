@@ -139,6 +139,20 @@ def delete_drink(id):
         else:
             abort(422)
 
+##### FOR TESTING
+@app.route('/')
+@requires_auth(permission='get:drinks-detail')
+def test(payload):
+    print(payload)
+    return jsonify({"success": True})
+
+# delete:drinks
+# get:drinks-detail
+# patch:drinks
+# post:drinks
+##### FOR TESTING
+
+
 
 # Error Handling
 @app.errorhandler(422)
@@ -158,9 +172,8 @@ def not_found(error):
         "message": "Not found"
     }), 404
 
-
 @app.errorhandler(401)
-def not_found(error):
+def unauthorized(error):
     return jsonify({
         "success": False,
         "error": 401,
@@ -169,7 +182,7 @@ def not_found(error):
 
 
 @app.errorhandler(403)
-def not_found(error):
+def forbidden(error):
     return jsonify({
         "success": False,
         "error": 403,
